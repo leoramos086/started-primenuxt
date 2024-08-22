@@ -12,21 +12,9 @@ export default createConfigForNuxt({
       rules: {
         'vue/max-attributes-per-line': ['error', {
           singleline: {
-            max: 3,
+            max: 5,
           },
-          multiline: {
-            max: 1,
-          },
-
         }],
-      },
-    },
-  )
-  .override(
-    'nuxt/stylistic',
-    {
-      rules: {
-        'max-len': ['error', { code: 120 }],
       },
     },
   )
