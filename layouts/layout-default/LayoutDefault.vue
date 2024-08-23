@@ -39,11 +39,16 @@ watch(viewport.breakpoint, (newBreakpoint) => {
     <div class="layout-content-wrapper p-8 tablet:p-4">
       <slot />
     </div>
+    <div class="top-0 left-0 z-[980] fixed hidden bg-[--maskbg] opacity-70 backdrop-blur-sm w-full h-full layout-mask" />
   </div>
 </template>
 
 <style lang="scss">
 @import './assets/variables.scss';
+
+.layout-container.layout-mobile-active .layout-mask{
+  @apply block;
+}
 
 .layout-container {
   min-height: 100vh;
