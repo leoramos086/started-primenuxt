@@ -18,7 +18,7 @@ const containerClass = computed(() => {
 })
 
 onClickOutside(sidebar, () => {
-  if (viewport.breakpoint.value == 'mobile' && layoutState.menuMobileActive) {
+  if (viewport.breakpoint.value !== 'desktop' && layoutState.menuMobileActive) {
     toggleMenuMobile()
   }
 })
