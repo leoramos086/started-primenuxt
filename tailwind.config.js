@@ -1,12 +1,17 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 export default {
   darkMode: ['selector', '.app-dark'],
   content: [],
   theme: {
     screens: {
-      mobile: { max: '991px' },
-      desktop: { min: '992px' },
+
+      ...defaultTheme.screens,
+      mobile: { max: '600px' },
+      tablet: { max: '1023px' },
+      desktop: { min: '1024px' },
+      sm: '600px',
     },
     extend: {},
   },

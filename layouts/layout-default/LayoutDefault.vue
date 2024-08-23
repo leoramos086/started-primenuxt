@@ -36,10 +36,8 @@ watch(viewport.breakpoint, (newBreakpoint) => {
 
     <LayoutDefaultSidebar ref="sidebar" />
 
-    <div class="layout-content-wrapper p-8 mobile:p-4">
-      <div class="layout-content">
-        <slot />
-      </div>
+    <div class="layout-content-wrapper p-8 tablet:p-4">
+      <slot />
     </div>
   </div>
 </template>

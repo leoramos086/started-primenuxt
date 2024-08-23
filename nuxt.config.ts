@@ -18,12 +18,14 @@ export default defineNuxtConfig({
   },
   viewport: {
     breakpoints: {
-      mobile: 991,
-      desktop: 992,
+      mobile: 0,
+      tablet: 601,
+      desktop: 1024,
     },
     defaultBreakpoints: {
-      desktop: 'desktop',
+      tablet: 'tablet',
       mobile: 'mobile',
+      desktop: 'desktop',
     },
     fallbackBreakpoint: 'desktop',
   },

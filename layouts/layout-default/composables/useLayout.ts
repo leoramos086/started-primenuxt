@@ -44,10 +44,10 @@ export function useLayout() {
 
   function onMenuToggle(status: boolean | null = null) {
     if ($viewport.breakpoint.value === 'desktop') {
-      layoutState.menuMobileActive = (status !== null) ? status : !layoutState.menuMobileActive
+      layoutState.menuDesktopActive = (status !== null) ? status : !layoutState.menuDesktopActive
     }
     else {
-      layoutState.menuDesktopActive = (status !== null) ? status : !layoutState.menuDesktopActive
+      layoutState.menuMobileActive = (status !== null) ? status : !layoutState.menuMobileActive
     }
   }
 

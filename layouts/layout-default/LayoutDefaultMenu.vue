@@ -2,12 +2,16 @@
 import { ref } from 'vue'
 import LayoutDefaultMenuItem from './LayoutDefaultMenuItem.vue'
 import type { MenuItem } from './types/menu'
-import { IconHouse, IconMoon, IconSun } from '#components'
+import { IconHouse, IconNewspaper } from '#components'
 
 const model = ref<MenuItem[]>([
   {
     label: 'Principal',
     items: [{ label: 'Dashboard', icon: IconHouse, to: '/' }],
+  },
+  {
+    label: 'Components',
+    items: [{ label: 'Cards', icon: IconNewspaper, to: '/cards' }],
   },
   // {
   //   label: 'Administração',

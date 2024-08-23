@@ -7,7 +7,7 @@ const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useL
 
 <template>
   <div
-    class="top-0 left-0 z-[999] fixed flex flex flex-col flex-col bg-[--surface-card] w-64 h-full overflow-hidden layout-sidebar"
+    class="top-0 left-0 z-[999] fixed flex flex-col bg-[--surface-card] shadow-[--card-shadow] rounded-r-[--card-border-radius] w-64 h-full overflow-hidden layout-sidebar"
     @mouseenter="setMenuActive(true)"
     @mouseleave="setMenuActive(false)"
   >
@@ -33,7 +33,10 @@ const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useL
 </template>
 
 <style lang="scss">
-@media screen and (screen(mobile)) {
+// box-shadow: var(--card-shadow);
+//     border-radius: var(--card-border-radius);
+
+@media screen and (screen(tablet)) {
   .layout-sidebar {
     @apply transform transition-transform -translate-x-full duration-300 ease-out
   }
