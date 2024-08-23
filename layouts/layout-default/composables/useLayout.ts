@@ -7,6 +7,7 @@ interface LayoutState {
   menuDesktopActive: boolean
   menuAnchored: boolean
   menuMobileActive: boolean
+  activeMenuItem: string | null
 }
 
 const layoutConfig = reactive<LayoutConfig>({
@@ -18,12 +19,19 @@ const layoutState = reactive<LayoutState>({
   menuDesktopActive: false,
   menuAnchored: false,
   menuMobileActive: false,
+  activeMenuItem: null,
 })
 
 export function useLayout() {
+  const { $viewport } = useNuxtApp()
+
   function setMenuActive(status: boolean) {
     if (layoutState.menuAnchored) return
     layoutState.menuDesktopActive = status
+  }
+
+  const setActiveMenuItem = (item: string | null) => {
+    layoutState.activeMenuItem = item
   }
 
   function toggleMenuAnchored() {
@@ -32,6 +40,15 @@ export function useLayout() {
 
   function toggleMenuMobile(status: boolean | null = null) {
     layoutState.menuMobileActive = (status !== null) ? status : !layoutState.menuMobileActive
+  }
+
+  function onMenuToggle(status: boolean | null = null) {
+    if ($viewport.breakpoint.value === 'desktop') {
+      layoutState.menuMobileActive = (status !== null) ? status : !layoutState.menuMobileActive
+    }
+    else {
+      layoutState.menuDesktopActive = (status !== null) ? status : !layoutState.menuDesktopActive
+    }
   }
 
   const toggleDarkMode = () => {
@@ -55,6 +72,8 @@ export function useLayout() {
     layoutConfig: readonly(layoutConfig),
     layoutState: readonly(layoutState),
     setMenuActive,
+    setActiveMenuItem,
+    onMenuToggle,
     toggleMenuAnchored,
     toggleMenuMobile,
     toggleDarkMode,

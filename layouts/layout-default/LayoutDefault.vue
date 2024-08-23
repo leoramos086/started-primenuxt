@@ -58,7 +58,7 @@ watch(viewport.breakpoint, (newBreakpoint) => {
   @media screen and (screen(desktop)) {
 
     .layout-content-wrapper {
-      @apply ml-[5.5rem] overflow-x-hidden transition-[margin] duration-300 ease-out
+      @apply ml-[4.3rem] overflow-x-hidden transition-[margin] duration-300 ease-out
     }
 
     &.layout-sidebar-anchored {

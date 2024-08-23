@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useLayout } from './composables/useLayout'
+import LayoutDefaultMenu from './LayoutDefaultMenu.vue'
 
 const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useLayout()
 </script>
 
 <template>
   <div
-    class="top-0 left-0 z-[999] fixed flex flex-col bg-[--surface-card] w-64 h-full layout-sidebar"
+    class="top-0 left-0 z-[999] fixed flex flex flex-col flex-col bg-[--surface-card] w-64 h-full overflow-hidden layout-sidebar"
     @mouseenter="setMenuActive(true)"
     @mouseleave="setMenuActive(false)"
   >
@@ -21,6 +22,12 @@ const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useL
         binary
         @click="toggleMenuAnchored"
       />
+    </div>
+    <div class="flex px-2 w-full h-auto overflow-hidden overflow-y-auto layout-menu-container">
+      <LayoutDefaultMenu />
+    </div>
+    <div class="h-2">
+      <p />
     </div>
   </div>
 </template>
@@ -39,7 +46,13 @@ const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useL
 @media screen and (screen(desktop)) {
   .layout-container.layout-drawer {
     .layout-sidebar {
-      @apply transition-[width] duration-300 ease-out w-[5.5rem]
+      @apply transition-[width] duration-300 ease-out w-[4.3rem]
+    }
+
+    &:not(.layout-sidebar-active) {
+      .layout-menu-container {
+        @apply overflow-y-hidden
+      }
     }
 
     &.layout-sidebar-active {
