@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useLayout } from './composables/useLayout'
 import type { MenuItem } from './types/menu'
 
 const route = useRoute()
@@ -98,7 +97,7 @@ function checkActiveRoute(item: MenuItem) {
     </RouterLink>
     <Transition v-if="item.items && item.visible !== false" name="layout-submenu">
       <ul v-show="root ? true : isActiveMenu" class="layout-submenu">
-        <LayoutDefaultMenuItem
+        <DefaultMenuItem
           v-for="(child, i) in item.items"
           :key="itemKey + '_' + i"
           :index="i"

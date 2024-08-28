@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   },
   primevue: {
     importTheme: { from: '@/themes/theme.ts' },
+    options: {
+      inputVariant: 'filled',
+    },
   },
   viewport: {
     breakpoints: {

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useLayout } from './composables/useLayout'
-import LayoutDefaultSidebar from './LayoutDefaultSidebar.vue'
-import LayoutDefaultTopbar from './LayoutDefaultTopbar.vue'
+import DefaultSidebar from './DefaultSidebar.vue'
+import DefaultTopbar from './DefaultTopbar.vue'
 
 const { layoutConfig, layoutState, toggleMenuMobile } = useLayout()
 const viewport = useViewport()
@@ -32,9 +31,9 @@ watch(viewport.breakpoint, (newBreakpoint) => {
 
 <template>
   <div class="layout-transparent-topbar group layout-container" :class="containerClass">
-    <LayoutDefaultTopbar />
+    <DefaultTopbar />
 
-    <LayoutDefaultSidebar ref="sidebar" />
+    <DefaultSidebar ref="sidebar" />
 
     <div class="layout-content-wrapper p-8 tablet:p-4">
       <slot />

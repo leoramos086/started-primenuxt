@@ -57,11 +57,13 @@ const MyPreset = definePreset(Aura, {
 export default {
   preset: MyPreset,
   options: {
+    inputVariant: 'filled',
     cssLayer: {
       name: 'primevue',
       order: 'tailwind-base, primevue, layout, tailwind-utilities',
     },
 
     darkModeSelector: '.app-dark',
+
   },
 }

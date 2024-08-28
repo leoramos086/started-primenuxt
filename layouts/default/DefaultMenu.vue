@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import LayoutDefaultMenuItem from './LayoutDefaultMenuItem.vue'
+import DefaultMenuItem from './DefaultMenuItem.vue'
 import type { MenuItem } from './types/menu'
-import { IconHouse, IconNewspaper } from '#components'
+import { IconHouse, IconLogIn, IconNewspaper } from '#components'
 
 const model = ref<MenuItem[]>([
   {
@@ -12,6 +12,10 @@ const model = ref<MenuItem[]>([
   {
     label: 'Components',
     items: [{ label: 'Cards', icon: IconNewspaper, to: '/cards' }],
+  },
+  {
+    label: 'Páginas',
+    items: [{ label: 'Login', icon: IconLogIn, to: '/login' }],
   },
   // {
   //   label: 'Administração',
@@ -100,7 +104,7 @@ const model = ref<MenuItem[]>([
 <template>
   <ul class="w-full layout-menu">
     <template v-for="(item, i) in model" :key="item">
-      <LayoutDefaultMenuItem v-if="!item.separator" :item="item" :index="i" />
+      <DefaultMenuItem v-if="!item.separator" :item="item" :index="i" />
       <li v-if="item.separator" class="menu-separator" />
     </template>
   </ul>

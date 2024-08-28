@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useLayout } from './composables/useLayout'
-import LayoutDefaultMenu from './LayoutDefaultMenu.vue'
+import DefaultMenu from './DefaultMenu.vue'
 
 const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useLayout()
 </script>
@@ -24,7 +23,7 @@ const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useL
       />
     </div>
     <div class="flex px-2 w-full h-auto overflow-hidden overflow-y-auto layout-menu-container">
-      <LayoutDefaultMenu />
+      <DefaultMenu />
     </div>
     <div class="h-2">
       <p />
