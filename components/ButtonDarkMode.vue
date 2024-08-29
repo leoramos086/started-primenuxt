@@ -3,7 +3,7 @@ import { IconSun, IconMoon } from '#components'
 
 const { toggleDarkMode, layoutConfig } = useLayout()
 
-const props = withDefaults(defineProps<{ size: number }>(), { size: 24 })
+const props = withDefaults(defineProps<{ size?: number }>(), { size: 24 })
 </script>
 
 <template>
