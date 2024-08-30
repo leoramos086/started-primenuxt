@@ -6,6 +6,7 @@ export function useAPI<T>(
 ) {
   return useFetch(url, {
     ...options,
+    watch: false,
     $fetch: useNuxtApp().$api,
   })
 }

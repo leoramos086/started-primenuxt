@@ -3,7 +3,7 @@ definePageMeta({
   layout: false,
 })
 
-const formLogin = reactive({
+const loginForm = reactive<Auth.LoginForm>({
   email: '',
   password: '',
 })
@@ -20,14 +20,14 @@ const formLogin = reactive({
       <div class="flex flex-col justify-center gap-6 px-10 w-full tablet:max-w-lg h-full">
         <div class="flex flex-col gap-2">
           <label for="email">Email</label>
-          <InputText id="email" v-model="formLogin.email" aria-describedby="login.email" />
+          <InputText id="email" v-model="loginForm.email" aria-describedby="login.email" />
           <small id="email-help" />
         </div>
         <div class="flex flex-col">
           <label for="password">Senha</label>
           <Password
             id="password"
-            v-model="formLogin.password"
+            v-model="loginForm.password"
             aria-describedby="login.password"
             toggle-mask
             :feedback="false"
@@ -36,6 +36,7 @@ const formLogin = reactive({
           />
           <small id="password-help" />
         </div>
+
         <Button as="router-link" label="Entrar" size="large" to="/" class="mt-6" />
       </div>
     </div>
