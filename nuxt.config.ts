@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     'nuxt-lucide-icons',
     'nuxt-viewport',
+    '@vee-validate/nuxt',
   ],
   runtimeConfig: { // can be overridden by NUXT_API_SECRET environment variable
     public: {

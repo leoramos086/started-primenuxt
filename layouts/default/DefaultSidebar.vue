@@ -2,6 +2,7 @@
 import DefaultMenu from './DefaultMenu.vue'
 
 const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useLayout()
+const { logout } = useAuth()
 </script>
 
 <template>
@@ -22,11 +23,17 @@ const { layoutState, setMenuActive, toggleMenuAnchored, isSidebarActive } = useL
         @click="toggleMenuAnchored"
       />
     </div>
-    <div class="flex px-2 w-full h-auto overflow-hidden overflow-y-auto layout-menu-container">
+    <div class="flex pr-1 pl-2 w-full h-full overflow-hidden overflow-y-auto layout-menu-container">
       <DefaultMenu />
     </div>
-    <div class="h-2">
-      <p />
+    <div class="flex flex-col items-center pt-2">
+      <Button severity="secondary" :label="isSidebarActive? 'Logout': ''" class="py-2 w-full" @click="logout">
+        <template #icon="scope">
+          <span :class="scope.class">
+            <IconLogOut />
+          </span>
+        </template>
+      </Button>
     </div>
   </div>
 </template>

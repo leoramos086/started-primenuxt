@@ -1,21 +1,16 @@
-const state = reactive<Auth.StateUseState>({
+const auth = reactive<Auth.StateUseState>({
   authenticated: false,
   user: null,
 })
 
-export default function Auth() {
-  const authenticated = computed(() => state.authenticated)
-  const user = computed(() => state.user)
-
-  const setAuthenticated = (authenticated: boolean) => {
-    state.authenticated = authenticated
-  }
+export default function useAuth() {
+  const isLoggin = computed(() => auth.user !== null)
 
   const setUser = (user: Auth.UserState) => {
-    state.user = user
+    auth.user = user
   }
 
-  const login = async (credentials: Auth.LoginForm) => {
+  async function login(credentials: Auth.LoginForm) {
     await useAPI('/sanctum/csrf-cookie')
 
     const { error } = await useAPI('/login', {
@@ -24,38 +19,50 @@ export default function Auth() {
     })
 
     if (error.value) {
-      return Promise.reject(error.value.message)
+      if (error.value.statusCode === 422) {
+        return Promise.reject('Endereço de e-mail e/ou senha incorretos. Por favor, Tente novamente.')
+      }
+      return Promise.reject(error.value.statusMessage)
     }
 
     return attempt()
   }
 
-  const attempt = async () => {
+  async function logout() {
+    await useAPI('/sanctum/csrf-cookie')
+
+    setUser(null)
+
+    await useAPI('/logout', { method: 'POST' })
+
+    await navigateTo('/login')
+  }
+
+  async function attempt() {
     try {
       const { data, error } = await useAPI<Auth.User>('/api/user')
 
       if (error.value) {
         console.error('error', error.value)
-        setAuthenticated(false)
         setUser(null)
       }
 
-      setAuthenticated(true)
       setUser(data.value)
 
       return data.value
     }
     catch (e) {
       console.log('error', e)
-      setAuthenticated(false)
       setUser(null)
     }
   }
 
   return {
-    authenticated,
-    user,
+    auth: readonly(auth),
+    isLoggin,
     login,
+    logout,
+    setUser,
     attempt,
   }
 }

@@ -1,11 +1,12 @@
 <script setup lang="ts">
+const { auth } = useAuth()
 </script>
 
 <template>
   <div class="layout-content">
     <Card>
       <template #title>
-        Welcome
+        Welcome {{ auth.user?.name }}
       </template>
       <template #content>
         <p class="m-0">

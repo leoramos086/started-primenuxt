@@ -1,5 +1,6 @@
 export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig()
+  const auth = useAuth()
   const api = $fetch.create({
     baseURL: config.public.apiBase,
     credentials: 'include',
@@ -17,6 +18,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
     async onResponseError({ response }) {
       if (response.status === 401) {
+        auth.setUser(null)
         await nuxtApp.runWithContext(() => navigateTo('/login'))
       }
     },
