@@ -45,6 +45,7 @@ export default function useAuth() {
       if (error.value) {
         console.error('error', error.value)
         setUser(null)
+        return null
       }
 
       setUser(data.value)
