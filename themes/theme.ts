@@ -52,6 +52,23 @@ const MyPreset = definePreset(Aura, {
       },
     },
   },
+  components: {
+    card: {
+      colorScheme: {
+        light: {
+          root: {
+            shadow: `rgba(0, 0, 0, 0.1) 0px 2px 6px -1px, rgba(0, 0, 0, 0.06) 0px 0px 4px -1px`,
+          },
+        },
+        dark: {
+          root: {
+            shadow: `rgba(180, 180, 180, 0.2) 0px 2px 6px -1px, rgba(180, 180, 180, 0.16) 0px 0px 4px -1px`,
+          },
+        },
+      },
+
+    },
+  },
 })
 
 export default {

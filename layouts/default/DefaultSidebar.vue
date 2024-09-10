@@ -7,7 +7,7 @@ const { logout } = useAuth()
 
 <template>
   <div
-    class="top-0 left-0 z-[999] fixed flex flex-col bg-[--surface-card] shadow-[--card-shadow] rounded-r-[--card-border-radius] w-64 h-full overflow-hidden layout-sidebar"
+    class="top-0 left-0 z-[999] fixed flex flex-col bg-[--surface-card] shadow-card rounded-r-[--card-border-radius] w-64 h-full overflow-hidden layout-sidebar"
     @mouseenter="setMenuActive(true)"
     @mouseleave="setMenuActive(false)"
   >
@@ -27,7 +27,13 @@ const { logout } = useAuth()
       <DefaultMenu />
     </div>
     <div class="flex flex-col items-center pt-2">
-      <Button severity="secondary" :label="isSidebarActive? 'Logout': ''" class="py-2 w-full" @click="logout">
+      <Button
+        severity="secondary"
+        :label="isSidebarActive? 'Logout': ''"
+        class="pt-4 pb-3 w-full"
+        :pt="{ root: 'rounded-none' }"
+        @click="logout"
+      >
         <template #icon="scope">
           <span :class="scope.class">
             <IconLogOut />

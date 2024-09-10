@@ -13,6 +13,9 @@ export default {
       desktop: { min: '1024px' },
       sm: '600px',
     },
+    boxShadow: {
+      card: 'var(--p-card-shadow)',
+    },
     extend: {},
   },
   plugins: [require('tailwindcss-primeui')],
